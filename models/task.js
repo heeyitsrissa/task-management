@@ -61,7 +61,7 @@ Task.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Task',
+        modelName: 'task',
     }
 );
 

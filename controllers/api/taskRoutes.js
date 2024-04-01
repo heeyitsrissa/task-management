@@ -57,26 +57,64 @@ router.get('/', withAuth, async (req, res) => {
           res.status(500).json(err);
       }
   });
+
+  // Delete task by ID
+  router.delete('/:id', withAuth, async (req, res) => {
+    try {
+      // Extract the task ID from the request parameters
+      const taskId = req.params.id;
   
-  router.delete("/:id", withAuth, async (req, res) => {
-      try {
-          const taskData = await Task.destroy({
-              where: {
-                  id: req.params.id,
-                  user_id: req.session.user_id,
-              },
-          });
+      // Fetch the task with the specified ID from the database
+      const task = await Task.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
   
-          if (!taskData) {
-              res.status(404).json({ message: "No task found with this id!" });
-              return;
-          }
-  
-          res.status(200).json(taskData);
-      } catch (err) {
-          res.status(500).json(err);
+      // If the task with the specified ID is not found, return a 404 status code with a message
+      if (!task) {
+        return res.status(404).json({ message: 'Task not found' });
       }
+  
+      // If the task is found, return it with a 200 status code
+      res.status(200).json(task);
+    } catch (err) {
+      // If an error occurs, return a 500 status code with the error message
+      console.error(err);
+      res.status(500).json({ message: 'Server error' });
+    }
   });
+
+  
+// Get task by ID
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    // Extract the task ID from the request parameters
+    const taskId = req.params.id;
+
+    // Fetch the task with the specified ID from the database
+    const task = await Task.destroy({
+        where: {
+            id: taskId
+        }
+    });
+
+    // If the task with the specified ID is not found, return a 404 status code with a message
+    if (!task) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    // If the task is found, return it with a 200 status code
+    res.status(200).json(task);
+  } catch (err) {
+    // If an error occurs, return a 500 status code with the error message
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+module.exports = router;
+
   
   module.exports = router;
   
