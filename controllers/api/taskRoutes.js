@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Task, User } = require("../../models");
 
 const withAuth = require("../../utils/auth");
-const { appendTaskToFile } = require("../../utils/helpers");
+// const { appendTaskToFile } = require("../../utils/helpers");
 
 router.get('/', withAuth, async (req, res) => {
     try {

@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const authRouter = require('./controllers/api/userRoutes');
-// const passport = require('passport');
+const passport = require('passport');
 const taskRoutes = require('./controllers/api/taskRoutes');
 
 // const fs = require('fs').promises;
@@ -47,8 +47,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session(sess));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 
 app.use(routes);
