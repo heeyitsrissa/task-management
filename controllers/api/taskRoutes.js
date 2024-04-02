@@ -142,22 +142,5 @@ router.get('/:id', withAuth, async (req, res) => {
 module.exports = router;
 
   
-  module.exports = router;
-  
-
-//   router.get('/', withAuth, async (req, res) => {
-//     try {
-//       const userData = await User.findByPk(req.session.user_id, {
-//         attributes: { exclude: ['password'] },
-//         include: [{ model: Task }],
-//       });
-  
-//       const user = userData.get({ plain: true });
-  
-//       res.render('homepage', { ...user, logged_in: true });
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
 
 
