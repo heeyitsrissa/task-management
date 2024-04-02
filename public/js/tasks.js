@@ -188,7 +188,7 @@ const delButtonHandler = async (event) => {
 
 //     displayTasks();
 // });
-=======
+
 console.log('tasks.js connected');
 
 
