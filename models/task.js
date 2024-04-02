@@ -1,7 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Task extends Model { }
+class Task extends Model {}
+
 
 Task.init(
     {
@@ -35,9 +36,9 @@ Task.init(
 
         priority: {
             type: DataTypes.STRING,
-            defaultValue: 'high',
+            defaultValue: "high",
             validate: {
-                isIn: [['high', 'medium', 'low']]
+                isIn: [["high", "medium", "low"]]
             }
         },
 
@@ -45,14 +46,14 @@ Task.init(
             type: DataTypes.STRING,
             defaultValue: 'pending',
             validate: {
-                isIn: [['pending', 'completed', 'inProgress']]
+                isIn: [["pending", "completed", "inProgress"]]
             }
         },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'User',
-                key: 'id'
+                model: "User",
+                key: "id"
             }
         },  
     },
@@ -61,7 +62,7 @@ Task.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'task',
+        modelName: "Task",
     }
 );
 

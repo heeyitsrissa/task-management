@@ -1,15 +1,20 @@
 [
     {   
-        "id": 1,
+        
         "username": "Levan",
         "email": "levangulbatashvili1@gmail.com",
         "password": "password0808"
     },
-
-    {   
+    {
         "id": 2,
-        "username": "Rafa",
-        "email": "rafariz01@gmail.com",
-        "password": "password123"
+        "username": "Marissa",
+        "email": "marissapratt6@gmail.com",
+        "password": "pass123"
+    },
+    {   
+        "id": 3,
+        "username": "daniel",
+        "email": "jdah49d@gmail.com",
+        "password": "Brooklyn.99"
     }
 ]

@@ -19,6 +19,7 @@
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
     "mysql2": "^3.9.2",
+    "nodemon": "^3.1.0",
     "passport": "^0.7.0",
     "passport-google-oidc": "^0.1.0",
     "sequelize": "^6.37.1"

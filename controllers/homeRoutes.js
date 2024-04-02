@@ -85,6 +85,7 @@ router.get('/inprogress', async (req, res) => {
   }
 });
 
+
 // route for completed tasks
 router.get('/completed', async (req, res) => {
   try {
@@ -134,7 +135,7 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
  
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/login');
     return;
   }
 

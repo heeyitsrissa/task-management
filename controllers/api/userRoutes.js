@@ -4,7 +4,7 @@ const { User } = require('../../models');
 // const GoogleStrategy = require('passport-google-oidc');
 // const registerRoute = require('./registerRoute');
 
-// router.post('/login', registerRoute.registerUser);
+// router.post('/register', registerRoute.registerUser);
 
 // passport.use(new GoogleStrategy({
 //   clientID: process.env['GOOGLE_CLIENT_ID'],
@@ -72,15 +72,16 @@ const { User } = require('../../models');
 // }));
 
 
+
+
 router.post('/register', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
+    req.session.user_id = userData.id;
+    req.session.logged_in = true;
     req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
+      res.redirect('/');
     });
   } catch (err) {
     res.status(400).json(err);
@@ -91,29 +92,18 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body)
     const userData = await User.findOne({ where: { email: req.body.email } });
 
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
+    if (!userData || !(await userData.checkPassword(req.body.password)
+    )) {
+      return res.status(400).json({ message: 'Incorrect email or password, please try again' });
     }
 
     req.session.user_id = userData.id;
     req.session.logged_in = true;
     req.session.save(() => {
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.redirect('/');   
     });
     
   } catch (err) {
@@ -121,15 +111,19 @@ router.post('/login', async (req, res) => {
   }
 });
 
-  // res.redirect('/');
-
 
 router.post('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie('session_id'); 
-    res.status(204).send(); 
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Failed to log out' });
+    }
+    res.clearCookie('connect.sid'); 
+    res.status(204).json({ message: 'Logged out successfully' });
   });
 });
+
+
+
 
 module.exports = router;
 
