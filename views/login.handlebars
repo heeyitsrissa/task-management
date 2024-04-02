@@ -1,31 +1,52 @@
 
 
-
-    <h4 class="cntr"> Log in </h4>
-    <div class="card container mt-4" style="width: 22rem;">
-        <form class="loginForm" action="/api/users/login" method="POST">
-            <div class="mb-3">
-
-                <input type="email" placeholder="Email" class="form-control input is-medium is-focused loginBtns"
-                    id="email-login" name="email">
-
-                <input type="password" placeholder="Password" class="form-control input is-medium is-focused loginBtns"
-                    id="password-login" name="password" autocomplete="current-password">
-
-                <button type="submit" class="button is-success submit-btn loginBtns">Log
-                    in</button>
-
-                <button type="submit" class="button is-success submit-btn loginBtns"><a href="/register">Create new
-                        account</a></button>
-
-                <h1 style="text-align:center;" class="loginBtns">Or</h1>
-                <a class="button is-link loginBtns google" style="width: 18rem;" href="/login/federated/google">Sign in
-                    with Google</a>
+    <nav>
+       
+        <section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-4">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Log In
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <form action="/api/users/login" method="POST">
+                                <div class="field">
+                                    <label class="label" for="email">Email</label>
+                                    <div class="control">
+                                        <input class="input" type="email" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label" for="password">Password</label>
+                                    <div class="control">
+                                        <input class="input" type="password" id="password" name="password" required>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-primary" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="has-text-centered">
+                                <p>Click <a href="register">register</a> if you don't have an account.</p>
+                                <p>Or sign in Using:</p>
+                                <button class="button is-info">Google</button>
+                                <button class="button is-link">Facebook</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-
-
+    </nav>
+    
     <script src="/public/js/login.js"></script>
 
 

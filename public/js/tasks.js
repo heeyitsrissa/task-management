@@ -1,28 +1,28 @@
 
 
-// const updateForm = async (event) => {
-//     event.preventDefault();
+const updateForm = async (event) => {
+    event.preventDefault();
   
-//     const description = document.querySelector('#task-description').value.trim();
-//     const title = document.querySelector('#task-title').value.trim();
-//     const status = document.querySelector('#task-status').value.trim();
+    const description = document.querySelector('#task-description').value.trim();
+    const title = document.querySelector('#task-title').value.trim();
+    const status = document.querySelector('#task-status').value.trim();
   
-//     if (status && title && description) {
-//       const response = await fetch(`/api/tasks/:id`, {
-//         method: 'GET',
-//         body: JSON.stringify({ title, status, description }),
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       });
+    if (status && title && description) {
+      const response = await fetch(`/api/tasks/:id`, {
+        method: 'GET',
+        body: JSON.stringify({ title, status, description }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
   
-//       if (response.ok) {
-//         document.location.reload();
-//       } else {
-//         alert('Failed to create project');
-//       }
-//     }
-//   };
+      if (response.ok) {
+        document.location.reload();
+      } else {
+        alert('Failed to create project');
+      }
+    }
+  };
 
 // Add an event listener to the form submission
 document.getElementById('addTaskForm').addEventListener('submit', async function(event) {

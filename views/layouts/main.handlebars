@@ -15,22 +15,48 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <a href="/">Task manager!!</a>
-      </h1>
-      <nav>
-        {{#if logged_in}}
-        <button id="logout">logout</button>
-        <p>Welcome back {{username}}!</p>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
+  <section class="hero is-dark is-bold has-shadow">
+    <div class="hero-body">
+      <div class="container">
+        <nav class="navbar" aria-label="main navigation">
+          <div class="navbar-brand">
+            <h1 class="navbar-item">
+              <a href="/" class="title has-text-light">Task Manager</a>
+            </h1>
+            <span class="navbar-burger burger has-text-light" id="nav-toggle" data-target="navbar-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div class="navbar-menu" id="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item">
+
+                <div class="buttons">
+                  <button id="logout" class="button is-primary is-inverted is-outlined">Logout</button>
+                </div>
+                <p class="has-text-light">Welcome !!  {{email}}</p>
+              </div>
+              <div class="navbar-item">
+                <button id="dark-mode-toggle" class="button is-primary is-inverted is-outlined">Dark Mode</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
     
-    <main class="container container-fluid mt-5">
+  </section>
+
+
+
+  
+
+  <main class="section">
+    <div class="container">
+      <div id="taskList"></div>
       {{{ body }}}
     </main>
     <footer>
