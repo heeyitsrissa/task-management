@@ -1,25 +1,64 @@
-
-<div class="box">
+{{#if logged_in}}
+<h1>My Tasks</h1>
+<div class="modal-content">
+  <div class="box">
     <h2 class="title is-4">New Task</h2>
     <form id="addTaskForm">
-        <div class="field">
-            <label class="label">Task Name</label>
-            <div class="control">
-                <input id="title" class="input" type="text" name="title" placeholder="Enter task name" required>
-            </div>
+      <div class="field">
+        <label class="label">Task Name</label>
+        <div class="control">
+          <input class="input" type="text" name="title" placeholder="Enter task name" required>
         </div>
-        <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
-                <textarea id="desc" class="textarea" name="description" placeholder="Enter task description" required></textarea>
-            </div>
+      </div>
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <textarea class="textarea" name="description" placeholder="Enter task description" required></textarea>
         </div>
-        <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-primary" type="submit">submit</button>
-            </div>
-            <div class="control">
-                <button class="button is-danger" type="button" data-bs-dismiss="modal">Cancel</button>
-            </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button id="addBtn" class="button is-primary" type="submit">Add Task</button>
         </div>
+        <div class="control">
+          <button class="button is-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
     </form>
+  </div>
+
+   {{#each tasks}}
+    <div class="box mt-5" data-task-id="{{this.id}}">
+      <h2 class="title is-3">{{this.title}}</h2>
+      <p>Status: {{this.status}}</p>
+      <p>Priority:{{this.priority}}</p>
+      <p>Start Date:{{this.start_date}}</p>
+      <p>Due Date:{{this.due_date}}</p>
+      <p>Description: {{this.description}}</p>
+      <div class="update-status">
+        <label for="status-select-{{this.id}}">Update Status:</label>
+        <select id="status-select-{{this.id}}">
+          <option value="pending">Pending</option>
+          <option value="in_progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+        <button class="update-status-button">Update</button>
+      </div>
+      <button class="delete-task">Delete</button>
+    </div>
+{{/each}}
+
+
+
+
+
+
+</div>
+
+{{else}}
+<h1>Please log in to view your tasks.</h1>
+{{/if}}
+
+<script src="/js/tasks.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>

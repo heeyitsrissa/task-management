@@ -93,7 +93,7 @@ router.put('/:id', withAuth, async (req, res) => {
       // Fetch the task with the specified ID from the database
       const task = await Task.destroy({
         where: {
-          id: req.params.id,
+          id: taskId
         },
       });
   
