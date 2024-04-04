@@ -330,8 +330,9 @@ html, body {
   }
   
   .button.is-info {
-    background-color: #485fc7;
-    border-color: #485fc7;
+    background-color: transparent;
+
+    border-color: transparent;
     color: #fff;
 }
 

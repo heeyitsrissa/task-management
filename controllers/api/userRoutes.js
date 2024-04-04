@@ -3,9 +3,9 @@ const express = require('express');
 const router = require('express').Router();
 const passport = require('passport');
 
-// const registerRoute = require('./registerRoute');
+const registerRoute = require('./registerRoute');
 
-// router.post('/register', registerRoute.registerUser);
+router.post('/register', registerRoute.registerUser);
 
 
 router.post('/', async (req, res) => {
